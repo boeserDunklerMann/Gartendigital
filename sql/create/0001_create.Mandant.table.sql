@@ -8,3 +8,8 @@ create TABLE Mandant
     constraint PK_Mandant PRIMARY KEY(MandantID),
     CONSTRAINT FK_Mandant_Mandant foreign key (ParentMandantID) REFERENCES Mandant(MandantID)
 );
+
+insert into Mandant
+(ParentMandantID, Des, SecurityToken)
+VALUES
+(null, 'Root', null);

@@ -1,5 +1,6 @@
 -- execute as dba
 create DATABASE if not exists Essos;
-create user 'drogon'@'%' identified by 'dracarys';  -- lokaler user für php bspw.
+create SCHEMA wth;
+create user 'drogon'@'%' identified by 'dracarys';
 grant all on Essos.* to 'drogon'@'%';
 
