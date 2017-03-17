@@ -16,7 +16,7 @@ END//
 drop PROCEDURE if EXISTS sp_DeleteMandant//
 create procedure sp_DeleteMandant(MandantID int)
 BEGIN
-    delete from Mandant where MandantID=MandantID;
+    delete from Mandant where Mandant.MandantID=MandantID;
 END//
 
 drop PROCEDURE if EXISTS sp_CreateMandant//
