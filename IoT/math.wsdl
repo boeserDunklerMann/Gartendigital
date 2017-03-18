@@ -1,0 +1,47 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+<definitions name='Math'
+  targetNamespace='http://temp.gartendigital.ddns:8080/Math'
+  xmlns:tns='http://temp.gartendigital.ddns:8080/Math'
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='addRequest'>
+  <part name='a' type='xsd:int'/>
+  <part name='b' type='xsd:int'/>
+</message>
+<message name='addResponse'>
+  <part name='Result' type='xsd:int'/>
+</message> 
+
+<portType name='addPortType'>
+  <operation name='add'>
+    <input message='tns:addRequest'/>
+    <output message='tns:addResponse'/>
+  </operation>
+</portType> 
+
+<binding name='addBinding' type='tns:addPortType'>
+  <soap:binding style='rpc'
+    transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='add'>
+    <soap:operation soapAction='urn:Math#add'/>
+    <input>
+      <soap:body use='encoded' namespace='urn:Math'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </input>
+    <output>
+      <soap:body use='encoded' namespace='urn:Math'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </output>
+  </operation>
+</binding> 
+
+<service name='addService'>
+  <port name='addPort' binding='tns:addBinding'>
+    <soap:address location='http://gartendigital.ddns.net:8080/IoT/soap.php'/>
+  </port>
+</service>
+</definitions>

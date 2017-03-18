@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<definitions name="GDCommHub"
+    targetNamespace="http://gartendigital.ddns.net:8080/IoT/GDCommHub"
+    xmlns:tns="http://gartendigital.ddns.net:8080/IoT/GDCommHub"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl"
+    xmlns="http://schemas.xmlsoap.org/wsdl" >
+    
+    <message name="testfunktionRequest">
+        <part name="a" type="xsd:string">
+    </message>
+
+    <message name="testfunktionResponse">
+        <part name="Result" type="xsd:string" />
+    </message>
+
+    <portType name="testfunktionPortType">
+        <operation name="testfunktion">
+            <input message="tns:testfunktionRequest" />
+            <output message="tns:testfunktionResponse" />
+        </operation>
+    </portType>
+
+    <binding name="testfunktionBinding" type="tns:testfunktionPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="testfunktion">
+            <soap:operation soapAction="urn:GDCommHub#testfunktion" />
+            <input>
+                <soap:body use="encoded" namespace="urn:GDCommHub" encodingStyle="http://schemas.xmlsoap.org/soap/encoding" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="urn:GDCommHub" encodingStyle="http://schemas.xmlsoap.org/soap/encoding" />
+            </output>
+        </operation>
+    </binding>
+
+    <service name="testfunkionService">
+        <port name="testfunktionPort" binding="testfunktionBinding">
+            <soap:address location="http://gartendigital.ddns.net:8080/IoT/soap.php">
+        </port>
+    </service>
+
+</definitions>
