@@ -3,3 +3,9 @@ X:\Visual Studio 2015\Projects\GartenDigital\WebServiceTest.Cons\bin\Debug\WebSe
 X:\Visual Studio 2015\Projects\GartenDigital\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.pdb
 X:\Visual Studio 2015\Projects\GartenDigital\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.exe
 X:\Visual Studio 2015\Projects\GartenDigital\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.pdb
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.exe.config
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.exe
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.pdb
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.exe
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.pdb
+X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.csprojResolveAssemblyReference.cache

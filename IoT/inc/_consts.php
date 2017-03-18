@@ -6,6 +6,6 @@
  $_dbPass = "dracarys";
  
  // Status Meldungen
- $_bookMsgSuccess = "Valar Morghulis";
+ $_bookMsgSuccess = "Valar Morghulis [%d]";
  $_bookMsgFailure = "Hodor!";
  ?>

@@ -3,10 +3,12 @@ use Essos;
 delimiter //
 
 drop procedure if exists sp_AddRaven//
-create procedure sp_AddRaven(mid int, msg text, out RavenID int)
+create procedure sp_AddRaven(mid int, msg text)
 begin
+    declare RavenID int;
     insert into Raven (MandantID, Message)  values (mid, msg);
     set RavenID = (select last_insert_id());
+    select RavenID;
 end //
 
 drop procedure if exists sp_DelRaven//
@@ -25,4 +27,11 @@ begin
         tstamp=CURRENT_TIMESTAMP
     where Raven.RavenID=ravenID;
 end//
+
+drop procedure if exists sp_GetRaven//
+create procedure sp_GetRaven(ravenID int)
+begin
+    select Message /* TODO: eigentlich sowas wie 'MessageResponse' */ from Raven where Raven.RavenID=ravenID;
+end//
+
 delimiter ;

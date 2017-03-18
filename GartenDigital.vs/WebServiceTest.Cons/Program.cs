@@ -10,9 +10,11 @@ namespace WebServiceTest.Cons
 	{
 		static void Main(string[] args)
 		{
-			ServiceReference1.addPortTypeClient test = new ServiceReference1.addPortTypeClient();
-			int x = test.add(3, 5);
-			
+			Mereen.bookPortTypeClient raven = new Mereen.bookPortTypeClient();
+			Mereen.getRavenResponsePortTypeClient resp = new Mereen.getRavenResponsePortTypeClient();
+			string ret = raven.bookMsg("Hodor!");
+			ret = resp.getRavenResponse(10);
+			Console.WriteLine(ret);
 		}
 	}
 }

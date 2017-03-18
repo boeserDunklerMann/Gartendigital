@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="05d72c96-24f0-4322-a9bb-3c468e02dad0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c903395c-99bb-45ec-939e-7d6f20f7511d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -18,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://gartendigital.ddns.net:8080/IoT/math.wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://gartendigital.ddns.net:8080/IoT/Mereen.wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Math.wsdl" MetadataType="Wsdl" ID="c8d8662c-67a9-486c-abeb-9c65c44ac6bd" SourceId="1" SourceUrl="http://gartendigital.ddns.net:8080/IoT/math.wsdl" />
+    <MetadataFile FileName="Mereen.wsdl" MetadataType="Wsdl" ID="4eb94fd3-092c-4417-8dc5-0d7435e4f8f0" SourceId="1" SourceUrl="http://gartendigital.ddns.net:8080/IoT/Mereen.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

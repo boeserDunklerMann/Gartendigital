@@ -8,21 +8,35 @@
   xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
   xmlns='http://schemas.xmlsoap.org/wsdl/'> 
 
-<message name='bookMsgRequest'>
-  <part name='amessage_from_raven' type='xsd:string'/>
+<message name='bookRequest'>
+  <part name='message_from_raven' type='xsd:string'/>
 </message>
-<message name='bookMsgResponse'>
+<message name='bookResponse'>
   <part name='Result' type='xsd:string'/>
-</message> 
+</message>
 
-<portType name='bookMsgPortType'>
+<message name='getRavenResponseRequest'>
+  <part name='ravenID' type='xsd:int' />
+</message>
+<message name="getRavenResponseResponse">
+  <part name="Result" type="xsd:string" />
+</message>
+
+<portType name='bookPortType'>
   <operation name='bookMsg'>
-    <input message='tns:bookMsgRequest'/>
-    <output message='tns:bookMsgResponse'/>
+    <input message='tns:bookRequest'/>
+    <output message='tns:bookResponse'/>
   </operation>
 </portType> 
 
-<binding name='bookMsgBinding' type='tns:bookMsgPortType'>
+<portType name="getRavenResponsePortType">
+  <operation name="getRavenResponse">
+    <input message="tns:getRavenResponseRequest" />
+    <output message="tns:getRavenResponseResponse" />
+  </operation>
+</portType>
+
+<binding name='bookBinding' type='tns:bookPortType'>
   <soap:binding style='rpc'
     transport='http://schemas.xmlsoap.org/soap/http'/>
   <operation name='bookMsg'>
@@ -38,8 +52,27 @@
   </operation>
 </binding> 
 
-<service name='bookMsgService'>
-  <port name='bookMsgPort' binding='tns:bookMsgBinding'>
+<binding name="getRavenResponseBinding" type="tns:getRavenResponsePortType">
+  <soap:binding style='rpc'
+    transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name="getRavenResponse">
+    <soap:operation soapAction="urn:Mereen#getRavenResponse" />
+    <input>
+      <soap:body use='encoded' namespace='urn:Mereen'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </input>
+    <output>
+      <soap:body use='encoded' namespace='urn:Mereen'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </output>
+  </operation>
+</binding>
+
+<service name='MereenService'>
+  <port name='bookPort' binding='tns:bookBinding'>
+    <soap:address location='http://gartendigital.ddns.net:8080/IoT/Mereen.php'/>
+  </port>
+  <port name="getRavenResponsePort" binding="tns:getRavenResponseBinding">
     <soap:address location='http://gartendigital.ddns.net:8080/IoT/Mereen.php'/>
   </port>
 </service>
