@@ -1,0 +1,46 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+<definitions name='Mereen'
+  targetNamespace='http://temp.gartendigital.ddns:8080/Mereen'
+  xmlns:tns='http://temp.gartendigital.ddns:8080/Mereen'
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='bookMsgRequest'>
+  <part name='amessage_from_raven' type='xsd:string'/>
+</message>
+<message name='bookMsgResponse'>
+  <part name='Result' type='xsd:string'/>
+</message> 
+
+<portType name='bookMsgPortType'>
+  <operation name='bookMsg'>
+    <input message='tns:bookMsgRequest'/>
+    <output message='tns:bookMsgResponse'/>
+  </operation>
+</portType> 
+
+<binding name='bookMsgBinding' type='tns:bookMsgPortType'>
+  <soap:binding style='rpc'
+    transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='bookMsg'>
+    <soap:operation soapAction='urn:Mereen#bookMsg'/>
+    <input>
+      <soap:body use='encoded' namespace='urn:Mereen'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </input>
+    <output>
+      <soap:body use='encoded' namespace='urn:Mereen'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </output>
+  </operation>
+</binding> 
+
+<service name='bookMsgService'>
+  <port name='bookMsgPort' binding='tns:bookMsgBinding'>
+    <soap:address location='http://gartendigital.ddns.net:8080/IoT/Mereen.php'/>
+  </port>
+</service>
+</definitions>
