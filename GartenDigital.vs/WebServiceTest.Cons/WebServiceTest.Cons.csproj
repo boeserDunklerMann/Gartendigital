@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Schema\Raven.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Meereen\Meereen.wsdl" />
     <None Include="Service References\Meereen\WebServiceTest.Cons.Meereen.bookMsgResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -81,9 +84,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Schema\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

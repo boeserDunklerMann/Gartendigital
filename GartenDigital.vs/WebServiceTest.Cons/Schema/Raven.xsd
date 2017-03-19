@@ -1,9 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="Raven"
-    targetNamespace="http://tempuri.org/Raven.xsd"
+    targetNamespace="https://meereen.ddns.net/IoT/Raven.xsd"
     elementFormDefault="qualified"
-    xmlns="http://tempuri.org/Raven.xsd"
-    xmlns:mstns="http://tempuri.org/Raven.xsd"
+    xmlns="https://meereen.ddns.net/IoT/Raven.xsd"
+    xmlns:mstns="https://meereen.ddns.net/IoT/Raven.xsd"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
 >
+	<xs:element name="Root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Data" type="xs:string" /> <!-- TODO: Complex type -->
+				<xs:element name="Mandant">
+					<xs:complexType>
+						<xs:attribute name="MandantID" type="xs:int" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="from" type="xs:string" />	<!--Absender hostname-->
+			<xs:attribute name="to" type="xs:string" /> <!--typ. "Meereen" -->
+			<xs:attribute name="datetime" type="xs:dateTime" /> <!--Absender zeit-->
+		
+		</xs:complexType>
+	</xs:element>
 </xs:schema>
