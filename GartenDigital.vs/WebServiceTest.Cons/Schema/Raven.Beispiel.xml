@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="Raven.xsd"
+			from="pcandre" to="Meereen" datetime="2017-03-19T16:53:00"
+			xmlns:raven="https://meereen.ddns.net/IoT/Schema/Raven.xsd">
+	<Mandant MandantID="1"/>
+	<Data>Something...</Data>
+</Root>

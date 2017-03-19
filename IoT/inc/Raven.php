@@ -10,12 +10,43 @@
         global $mysql;
         $msg = (string)$message_from_raven;
 
-        // TODO: Execution pipeline informieren, dass ein Rabe gekommen ist.
-        $res = $mysql->query("call sp_AddRaven(1, \"".$msg."\")");
-        $res->data_seek(0);
-        $row = $res->fetch_assoc();
-        $rid = $row['RavenID'];
-        $retVal = sprintf($GLOBALS['_bookMsgSuccess'], $rid);
+        // DONE: XML Schema-check
+        $xml = new DOMDocument();
+        $xml->loadXML($msg);
+        if (!$xml->schemaValidate("Schema/Raven.xsd"))
+        {
+            return $GLOBALS["_bookMsgFailure"];
+        }
+
+        // DONE: Message nach MandantID parsen
+        $xml = simplexml_load_string($msg);
+        $mandant = $xml->Mandant;
+        $mandantID = $mandant["MandantID"];
+
+        // DONE: Execution pipeline informieren, dass ein Rabe gekommen ist.
+        $res = $mysql->query("call sp_AddRaven(".$mandantID.", \"".addslashes($msg)."\")", MYSQLI_USE_RESULT);
+        if ($res)
+        {
+            //$res->data_seek(0);
+            $row = $res->fetch_assoc();
+            $rid = $row['RavenID'];
+            $retVal = sprintf($GLOBALS['_bookMsgSuccess'], $rid);
+            $res->close();
+
+            $msgQueue = msg_get_queue($GLOBALS["_mqID"]);
+            if ($msgQueue)
+            {
+                if (!msg_send($msgQueue, /* msg type */ $GLOBALS["_msgTypeNewRaven"], /* data */ $rid))
+                    throw new Exception("msg_send");
+                // if (!msg_remove_queue($msgQueue))
+                //     throw new Exception("msg_remove_queue");
+            }
+
+        }
+        else
+        {
+            $retVal = $GLOBALS['_bookMsgFailure'];
+        }
         return $retVal;
     }
 
