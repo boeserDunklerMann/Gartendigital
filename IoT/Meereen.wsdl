@@ -1,7 +1,7 @@
 <?xml version ='1.0' encoding ='UTF-8' ?>
-<definitions name='Mereen'
-  targetNamespace='http://temp.gartendigital.ddns:8080/Mereen'
-  xmlns:tns='http://temp.gartendigital.ddns:8080/Mereen'
+<definitions name='Meereen'
+  targetNamespace='http://temp.meereen.ddns.net/Meereen'
+  xmlns:tns='http://temp.meereen.ddns.net/Meereen'
   xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
   xmlns:xsd='http://www.w3.org/2001/XMLSchema'
   xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
@@ -40,13 +40,13 @@
   <soap:binding style='rpc'
     transport='http://schemas.xmlsoap.org/soap/http'/>
   <operation name='bookMsg'>
-    <soap:operation soapAction='urn:Mereen#bookMsg'/>
+    <soap:operation soapAction='urn:Meereen#bookMsg'/>
     <input>
-      <soap:body use='encoded' namespace='urn:Mereen'
+      <soap:body use='encoded' namespace='urn:Meereen'
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
     </input>
     <output>
-      <soap:body use='encoded' namespace='urn:Mereen'
+      <soap:body use='encoded' namespace='urn:Meereen'
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
     </output>
   </operation>
@@ -56,24 +56,24 @@
   <soap:binding style='rpc'
     transport='http://schemas.xmlsoap.org/soap/http'/>
   <operation name="getRavenResponse">
-    <soap:operation soapAction="urn:Mereen#getRavenResponse" />
+    <soap:operation soapAction="urn:Meereen#getRavenResponse" />
     <input>
-      <soap:body use='encoded' namespace='urn:Mereen'
+      <soap:body use='encoded' namespace='urn:Meereen'
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
     </input>
     <output>
-      <soap:body use='encoded' namespace='urn:Mereen'
+      <soap:body use='encoded' namespace='urn:Meereen'
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
     </output>
   </operation>
 </binding>
 
-<service name='MereenService'>
+<service name='MeereenService'>
   <port name='bookPort' binding='tns:bookBinding'>
-    <soap:address location='http://gartendigital.ddns.net:8080/IoT/Mereen.php'/>
+    <soap:address location='https://meereen.ddns.net/IoT/Meereen.php'/>
   </port>
   <port name="getRavenResponsePort" binding="tns:getRavenResponseBinding">
-    <soap:address location='http://gartendigital.ddns.net:8080/IoT/Mereen.php'/>
+    <soap:address location='https://meereen.ddns.net/IoT/Meereen.php'/>
   </port>
 </service>
 </definitions>

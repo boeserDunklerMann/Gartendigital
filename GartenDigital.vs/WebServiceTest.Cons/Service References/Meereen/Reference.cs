@@ -8,26 +8,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebServiceTest.Cons.Mereen {
+namespace WebServiceTest.Cons.Meereen {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://temp.gartendigital.ddns:8080/Mereen", ConfigurationName="Mereen.bookPortType")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://temp.meereen.ddns.net/Meereen", ConfigurationName="Meereen.bookPortType")]
     public interface bookPortType {
         
-        // CODEGEN: Generating message contract since the wrapper namespace (urn:Mereen) of message bookMsgRequest does not match the default value (http://temp.gartendigital.ddns:8080/Mereen)
-        [System.ServiceModel.OperationContractAttribute(Action="urn:Mereen#bookMsg", ReplyAction="*")]
+        // CODEGEN: Generating message contract since the wrapper namespace (urn:Meereen) of message bookMsgRequest does not match the default value (http://temp.meereen.ddns.net/Meereen)
+        [System.ServiceModel.OperationContractAttribute(Action="urn:Meereen#bookMsg", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        WebServiceTest.Cons.Mereen.bookMsgResponse bookMsg(WebServiceTest.Cons.Mereen.bookMsgRequest request);
+        WebServiceTest.Cons.Meereen.bookMsgResponse bookMsg(WebServiceTest.Cons.Meereen.bookMsgRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:Mereen#bookMsg", ReplyAction="*")]
-        System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.bookMsgResponse> bookMsgAsync(WebServiceTest.Cons.Mereen.bookMsgRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="urn:Meereen#bookMsg", ReplyAction="*")]
+        System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.bookMsgResponse> bookMsgAsync(WebServiceTest.Cons.Meereen.bookMsgRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="bookMsg", WrapperNamespace="urn:Mereen", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="bookMsg", WrapperNamespace="urn:Meereen", IsWrapped=true)]
     public partial class bookMsgRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
@@ -44,7 +44,7 @@ namespace WebServiceTest.Cons.Mereen {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="bookMsgResponse", WrapperNamespace="urn:Mereen", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="bookMsgResponse", WrapperNamespace="urn:Meereen", IsWrapped=true)]
     public partial class bookMsgResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
@@ -59,12 +59,12 @@ namespace WebServiceTest.Cons.Mereen {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface bookPortTypeChannel : WebServiceTest.Cons.Mereen.bookPortType, System.ServiceModel.IClientChannel {
+    public interface bookPortTypeChannel : WebServiceTest.Cons.Meereen.bookPortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class bookPortTypeClient : System.ServiceModel.ClientBase<WebServiceTest.Cons.Mereen.bookPortType>, WebServiceTest.Cons.Mereen.bookPortType {
+    public partial class bookPortTypeClient : System.ServiceModel.ClientBase<WebServiceTest.Cons.Meereen.bookPortType>, WebServiceTest.Cons.Meereen.bookPortType {
         
         public bookPortTypeClient() {
         }
@@ -86,46 +86,46 @@ namespace WebServiceTest.Cons.Mereen {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebServiceTest.Cons.Mereen.bookMsgResponse WebServiceTest.Cons.Mereen.bookPortType.bookMsg(WebServiceTest.Cons.Mereen.bookMsgRequest request) {
+        WebServiceTest.Cons.Meereen.bookMsgResponse WebServiceTest.Cons.Meereen.bookPortType.bookMsg(WebServiceTest.Cons.Meereen.bookMsgRequest request) {
             return base.Channel.bookMsg(request);
         }
         
         public string bookMsg(string message_from_raven) {
-            WebServiceTest.Cons.Mereen.bookMsgRequest inValue = new WebServiceTest.Cons.Mereen.bookMsgRequest();
+            WebServiceTest.Cons.Meereen.bookMsgRequest inValue = new WebServiceTest.Cons.Meereen.bookMsgRequest();
             inValue.message_from_raven = message_from_raven;
-            WebServiceTest.Cons.Mereen.bookMsgResponse retVal = ((WebServiceTest.Cons.Mereen.bookPortType)(this)).bookMsg(inValue);
+            WebServiceTest.Cons.Meereen.bookMsgResponse retVal = ((WebServiceTest.Cons.Meereen.bookPortType)(this)).bookMsg(inValue);
             return retVal.Result;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.bookMsgResponse> WebServiceTest.Cons.Mereen.bookPortType.bookMsgAsync(WebServiceTest.Cons.Mereen.bookMsgRequest request) {
+        System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.bookMsgResponse> WebServiceTest.Cons.Meereen.bookPortType.bookMsgAsync(WebServiceTest.Cons.Meereen.bookMsgRequest request) {
             return base.Channel.bookMsgAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.bookMsgResponse> bookMsgAsync(string message_from_raven) {
-            WebServiceTest.Cons.Mereen.bookMsgRequest inValue = new WebServiceTest.Cons.Mereen.bookMsgRequest();
+        public System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.bookMsgResponse> bookMsgAsync(string message_from_raven) {
+            WebServiceTest.Cons.Meereen.bookMsgRequest inValue = new WebServiceTest.Cons.Meereen.bookMsgRequest();
             inValue.message_from_raven = message_from_raven;
-            return ((WebServiceTest.Cons.Mereen.bookPortType)(this)).bookMsgAsync(inValue);
+            return ((WebServiceTest.Cons.Meereen.bookPortType)(this)).bookMsgAsync(inValue);
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://temp.gartendigital.ddns:8080/Mereen", ConfigurationName="Mereen.getRavenResponsePortType")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://temp.meereen.ddns.net/Meereen", ConfigurationName="Meereen.getRavenResponsePortType")]
     public interface getRavenResponsePortType {
         
-        // CODEGEN: Generating message contract since the wrapper namespace (urn:Mereen) of message getRavenResponseRequest does not match the default value (http://temp.gartendigital.ddns:8080/Mereen)
-        [System.ServiceModel.OperationContractAttribute(Action="urn:Mereen#getRavenResponse", ReplyAction="*")]
+        // CODEGEN: Generating message contract since the wrapper namespace (urn:Meereen) of message getRavenResponseRequest does not match the default value (http://temp.meereen.ddns.net/Meereen)
+        [System.ServiceModel.OperationContractAttribute(Action="urn:Meereen#getRavenResponse", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        WebServiceTest.Cons.Mereen.getRavenResponseResponse getRavenResponse(WebServiceTest.Cons.Mereen.getRavenResponseRequest request);
+        WebServiceTest.Cons.Meereen.getRavenResponseResponse getRavenResponse(WebServiceTest.Cons.Meereen.getRavenResponseRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:Mereen#getRavenResponse", ReplyAction="*")]
-        System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.getRavenResponseResponse> getRavenResponseAsync(WebServiceTest.Cons.Mereen.getRavenResponseRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="urn:Meereen#getRavenResponse", ReplyAction="*")]
+        System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.getRavenResponseResponse> getRavenResponseAsync(WebServiceTest.Cons.Meereen.getRavenResponseRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRavenResponse", WrapperNamespace="urn:Mereen", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRavenResponse", WrapperNamespace="urn:Meereen", IsWrapped=true)]
     public partial class getRavenResponseRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
@@ -142,7 +142,7 @@ namespace WebServiceTest.Cons.Mereen {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRavenResponseResponse", WrapperNamespace="urn:Mereen", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRavenResponseResponse", WrapperNamespace="urn:Meereen", IsWrapped=true)]
     public partial class getRavenResponseResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
@@ -157,12 +157,12 @@ namespace WebServiceTest.Cons.Mereen {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface getRavenResponsePortTypeChannel : WebServiceTest.Cons.Mereen.getRavenResponsePortType, System.ServiceModel.IClientChannel {
+    public interface getRavenResponsePortTypeChannel : WebServiceTest.Cons.Meereen.getRavenResponsePortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class getRavenResponsePortTypeClient : System.ServiceModel.ClientBase<WebServiceTest.Cons.Mereen.getRavenResponsePortType>, WebServiceTest.Cons.Mereen.getRavenResponsePortType {
+    public partial class getRavenResponsePortTypeClient : System.ServiceModel.ClientBase<WebServiceTest.Cons.Meereen.getRavenResponsePortType>, WebServiceTest.Cons.Meereen.getRavenResponsePortType {
         
         public getRavenResponsePortTypeClient() {
         }
@@ -184,26 +184,26 @@ namespace WebServiceTest.Cons.Mereen {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebServiceTest.Cons.Mereen.getRavenResponseResponse WebServiceTest.Cons.Mereen.getRavenResponsePortType.getRavenResponse(WebServiceTest.Cons.Mereen.getRavenResponseRequest request) {
+        WebServiceTest.Cons.Meereen.getRavenResponseResponse WebServiceTest.Cons.Meereen.getRavenResponsePortType.getRavenResponse(WebServiceTest.Cons.Meereen.getRavenResponseRequest request) {
             return base.Channel.getRavenResponse(request);
         }
         
         public string getRavenResponse(int ravenID) {
-            WebServiceTest.Cons.Mereen.getRavenResponseRequest inValue = new WebServiceTest.Cons.Mereen.getRavenResponseRequest();
+            WebServiceTest.Cons.Meereen.getRavenResponseRequest inValue = new WebServiceTest.Cons.Meereen.getRavenResponseRequest();
             inValue.ravenID = ravenID;
-            WebServiceTest.Cons.Mereen.getRavenResponseResponse retVal = ((WebServiceTest.Cons.Mereen.getRavenResponsePortType)(this)).getRavenResponse(inValue);
+            WebServiceTest.Cons.Meereen.getRavenResponseResponse retVal = ((WebServiceTest.Cons.Meereen.getRavenResponsePortType)(this)).getRavenResponse(inValue);
             return retVal.Result;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.getRavenResponseResponse> WebServiceTest.Cons.Mereen.getRavenResponsePortType.getRavenResponseAsync(WebServiceTest.Cons.Mereen.getRavenResponseRequest request) {
+        System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.getRavenResponseResponse> WebServiceTest.Cons.Meereen.getRavenResponsePortType.getRavenResponseAsync(WebServiceTest.Cons.Meereen.getRavenResponseRequest request) {
             return base.Channel.getRavenResponseAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WebServiceTest.Cons.Mereen.getRavenResponseResponse> getRavenResponseAsync(int ravenID) {
-            WebServiceTest.Cons.Mereen.getRavenResponseRequest inValue = new WebServiceTest.Cons.Mereen.getRavenResponseRequest();
+        public System.Threading.Tasks.Task<WebServiceTest.Cons.Meereen.getRavenResponseResponse> getRavenResponseAsync(int ravenID) {
+            WebServiceTest.Cons.Meereen.getRavenResponseRequest inValue = new WebServiceTest.Cons.Meereen.getRavenResponseRequest();
             inValue.ravenID = ravenID;
-            return ((WebServiceTest.Cons.Mereen.getRavenResponsePortType)(this)).getRavenResponseAsync(inValue);
+            return ((WebServiceTest.Cons.Meereen.getRavenResponsePortType)(this)).getRavenResponseAsync(inValue);
         }
     }
 }

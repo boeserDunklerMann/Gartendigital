@@ -10,8 +10,8 @@ namespace WebServiceTest.Cons
 	{
 		static void Main(string[] args)
 		{
-			Mereen.bookPortTypeClient raven = new Mereen.bookPortTypeClient();
-			Mereen.getRavenResponsePortTypeClient resp = new Mereen.getRavenResponsePortTypeClient();
+			Meereen.bookPortTypeClient raven = new Meereen.bookPortTypeClient();
+			Meereen.getRavenResponsePortTypeClient resp = new Meereen.getRavenResponsePortTypeClient();
 			string ret = raven.bookMsg("Hodor!");
 			ret = resp.getRavenResponse(10);
 			Console.WriteLine(ret);
