@@ -1,0 +1,33 @@
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for meereen.ddns.net
+Using the webroot path /media/sd/www8080 for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+Generating key (2048 bits): /etc/letsencrypt/keys/0000_key-certbot.pem
+Creating CSR: /etc/letsencrypt/csr/0000_csr-certbot.pem
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/meereen.ddns.net/fullchain.pem. Your cert
+   will expire on 2017-06-17. To obtain a new or tweaked version of
+   this certificate in the future, simply run certbot-auto again. To
+   non-interactively renew *all* of your certificates, run
+   "certbot-auto renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+root@raspberrypi:~/cert# ./certbot-auto certificates
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+-------------------------------------------------------------------------------
+Found the following certs:
+  Certificate Name: meereen.ddns.net
+    Domains: meereen.ddns.net
+    Expiry Date: 2017-06-17 12:01:00+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/meereen.ddns.net/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/meereen.ddns.net/privkey.pem
+-------------------------------------------------------------------------------

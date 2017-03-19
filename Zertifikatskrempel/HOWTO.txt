@@ -1,0 +1,3 @@
+Der virtuelle Server (und nur dieser!) muss auf Port 80 laufen.
+Dann
+certbota-auto certonly --webroot -d mein.domain.net -w /dir_zum_webroot_des_virt_server
