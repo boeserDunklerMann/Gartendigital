@@ -1,0 +1,5 @@
+OMV-admin	andre-nas.servebeer.com	81	http
+		raspberrypi		81	http
+Meereen-WS	meereen.ddns.net	8080	http
+		meereen.ddns.net	443	https
+ownCloud	andre-nas.servebeer.com	88	https

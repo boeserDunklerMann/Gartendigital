@@ -21,8 +21,8 @@
         print_r($msgQueue);
         if (!msg_send($msgQueue, /* msg type? */ 21, /* data */ 123456))
             die("msg_send");
-        if (!msg_remove_queue($msgQueue))
-            die("msg_remove_queue");
+        // if (!msg_remove_queue($msgQueue))
+        //     die("msg_remove_queue");
     }
 
     // $xml = simplexml_load_file("Schema/Raven.Beispiel.xml");

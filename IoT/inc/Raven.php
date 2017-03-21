@@ -9,6 +9,8 @@
     {
         global $mysql;
         $msg = (string)$message_from_raven;
+        openlog($GLOBALS["_logIdentifier"], LOG_PID | LOG_PERROR, LOG_LOCAL0);
+        syslog(LOG_DEBUG, "Got raven");
 
         // DONE: XML Schema-check
         $xml = new DOMDocument();
@@ -40,6 +42,8 @@
                     throw new Exception("msg_send");
                 // if (!msg_remove_queue($msgQueue))
                 //     throw new Exception("msg_remove_queue");
+                // TODO: execute the pipeline (async)
+                exec("php ExecPipeline.php");
             }
 
         }
@@ -47,6 +51,7 @@
         {
             $retVal = $GLOBALS['_bookMsgFailure'];
         }
+        closelog();
         return $retVal;
     }
 
@@ -55,7 +60,7 @@
         global $mysql;
         $rid = (int)$ravenID;
 
-        $res = $mysql->query(sprintf("call sp_GetRaven(%d)", $rid));
+        $res = $mysql->query(sprintf("call sp_GetRaven(%d)", $rid)); // TODO: eigentlich sp_GetRavenResponse
         $res->data_seek(0);
         $row = $res->fetch_assoc();
         return $row["Message"];

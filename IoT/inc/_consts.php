@@ -13,4 +13,5 @@
  $_mqID = 2107;
  // internal message type ID for a new Raven
  $_msgTypeNewRaven = 21;
+ $_logIdentifier = "MeereenLog";
  ?>
