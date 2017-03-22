@@ -59,4 +59,4 @@ begin
 end //
 delimiter ;
 
-call sp_SetSettings('DBVersion', 1, '0.1 ante');
+call sp_SetSettings('DBVersion', 1, '0.2 ante');

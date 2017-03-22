@@ -8,6 +8,7 @@
 		<Sensors>
 			<Sensor MeteringType="D" MeteringName="Lichtmelder" MeteringSource="GPIO" VirtualMeteringPoint="1">1.0</Sensor>
 			<Sensor MeteringType="A" MeteringName="Außentemperatur" MeteringSource="GPIO" VirtualMeteringPoint="3">23.4</Sensor>
+			<Sensor MeteringType="RAW" MeteringName="Regentonne" MeteringSource="GPIO" VirtualMeteringPoint="2">1000</Sensor>
 		</Sensors>
 	</Data>
 </IoT>

@@ -31,7 +31,19 @@ end//
 drop procedure if exists sp_GetRaven//
 create procedure sp_GetRaven(ravenID int)
 begin
-    select Message /* TODO: eigentlich sowas wie 'MessageResponse' */ from Raven where Raven.RavenID=ravenID;
+    select Message from Raven where Raven.RavenID=ravenID;
+end//
+
+drop procedure if exists sp_GetRavenResponse//
+create procedure sp_GetRavenResponse(ravenID int)
+begin
+    select MessageResponse from Raven where Raven.RavenID=ravenID;
+end//
+
+drop procedure if exists sp_GetAllRavensForMandant//
+create procedure sp_GetAllRavensForMandant(mandantID int)
+begin
+    select ravenID from Raven where Raven.MandantID=mandantID;
 end//
 
 delimiter ;

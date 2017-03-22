@@ -27,6 +27,7 @@
 																<xs:restriction base="xs:string">
 																	<xs:enumeration value="A" />
 																	<xs:enumeration value="D"/>
+																	<xs:enumeration value="RAW" /><!--unberechnete Analogwerte-->
 																</xs:restriction>
 															</xs:simpleType>
 														</xs:attribute>

@@ -17,6 +17,7 @@
         $xml->loadXML($msg);
         if (!$xml->schemaValidate("Schema/Raven.xsd"))
         {
+            syslog(LOG_ERR, "Schema validation failed.");
             return $GLOBALS["_bookMsgFailure"];
         }
 
@@ -39,16 +40,24 @@
             if ($msgQueue)
             {
                 if (!msg_send($msgQueue, /* msg type */ $GLOBALS["_msgTypeNewRaven"], /* data */ $rid))
+                {
+                    syslog(LOG_ERR, "Writing msg queue failed.");
                     throw new Exception("msg_send");
+                }
                 // if (!msg_remove_queue($msgQueue))
                 //     throw new Exception("msg_remove_queue");
                 // TODO: execute the pipeline (async)
-                exec("php ExecPipeline.php");
+                // exec("php ExecPipeline.php");
+            }
+            else
+            {
+                syslog(LOG_ERR, "Opening msg queue failed.");
             }
 
         }
         else
         {
+            syslog(LOG_ERR, "Adding raven in DB failed.");
             $retVal = $GLOBALS['_bookMsgFailure'];
         }
         closelog();
