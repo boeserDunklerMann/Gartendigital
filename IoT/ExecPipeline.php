@@ -23,7 +23,8 @@
         $row = $res->fetch_assoc();
         $ravenMsg = $row["Message"];
         $res->free();
-
+        // TODO: hier ein simples select machen -> müsste krachen?
+        
         $xml = simplexml_load_string($ravenMsg);
         $sensors = $xml->Data->Sensors;
         $mandant = $xml->Mandant["MandantID"];
