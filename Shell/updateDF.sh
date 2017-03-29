@@ -1,7 +1,5 @@
 #!/bin/bash
-dffree=`df | grep sda1 | awk '{print $4}'`
-dfinuse=`df | grep sda1 | awk '{print $5}' | tr '%' ' '`
+dffree=`df -B K --out=avail /dev/sda1 | awk 'FNR==2 {print $1}' | tr 'K' ' '`
 
 rrdtool update /var/Meereen.Comm.Hub/rrd/usbdf.rrd N:$dffree
-rrdtool update /var/Meereen.Comm.Hub/rrd/usbinuse.rrd N:$dfinuse
 
