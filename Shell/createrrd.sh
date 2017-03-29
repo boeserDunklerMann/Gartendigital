@@ -50,3 +50,24 @@ rrdtool create $rrdMeereen/networkrxtx.rrd \
 	--step 60 \
 	DS:net:COUNTER:120:0:U \
 	RRA:AVERAGE:0.5:60:744
+
+# RRD database for cpu user load
+rrdtool create $rrdMeereen/cpuuser.rrd \
+	--step 1 \
+	DS:cpuuser:GAUGE:2:0:U \
+	RRA:AVERAGE:0.5:60:1440
+# RRD database for cpu sys load
+rrdtool create $rrdMeereen/cpusys.rrd \
+	--step 1 \
+	DS:cpusys:GAUGE:2:0:U \
+	RRA:AVERAGE:0.5:60:1440
+# RRD database for cpu idle load
+rrdtool create $rrdMeereen/cpuidle.rrd \
+	--step 1 \
+	DS:cpuidle:GAUGE:2:0:U \
+	RRA:AVERAGE:0.5:60:1440
+# RRD database for cpu iowait load
+rrdtool create $rrdMeereen/cpuiowt.rrd \
+	--step 1 \
+	DS:cpuiowt:GAUGE:2:0:U \
+	RRA:AVERAGE:0.5:60:1440

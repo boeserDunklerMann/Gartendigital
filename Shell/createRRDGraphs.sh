@@ -23,3 +23,9 @@ rrdtool graph $imgdest/swapfree.png --start -31d --title="free Swap" --vertical-
 
 rrdtool graph $imgdest/totalfree.png --start -31d --title="Total free" --vertical-label="Bytes" \
 	DEF:tfree=$rrdsrc/totalfree.rrd:tfree:AVERAGE AREA:tfree#00ffff:"total free"
+
+ rrdtool graph $imgdest/cpuload.png --start -24h --title "CPU Load" --vertical-label="Irgendwas" \
+ 	DEF:cpuuser=$rrdsrc/cpuuser.rrd:cpuuser:AVERAGE AREA:cpuuser#0000ff:"user" \
+	DEF:cpusys=$rrdsrc/cpusys.rrd:cpusys:AVERAGE AREA:cpusys#ff00ff:"system" \
+	DEF:cpuidle=$rrdsrc/cpuidle.rrd:cpuidle:AVERAGE AREA:cpuidle#00ff00:"idle" \
+	DEF:cpuiowt=$rrdsrc/cpuiowt.rrd:cpuiowt:AVERAGE AREA:cpuiowt#ff0000:"IO wait"
