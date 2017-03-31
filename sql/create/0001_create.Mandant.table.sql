@@ -7,7 +7,7 @@ create TABLE Mandant
     SecurityToken BINARY(40) null,
     constraint PK_Mandant PRIMARY KEY(MandantID),
     CONSTRAINT FK_Mandant_Mandant foreign key (ParentMandantID) REFERENCES Mandant(MandantID)
-);
+) Engine=InnoDB;
 
 insert into Mandant
 (ParentMandantID, Des, SecurityToken)

@@ -8,4 +8,4 @@ create table Measurement
 
     CONSTRAINT PK_Measurement PRIMARY KEY(measurementID),
     CONSTRAINT FK_Measurement_Mandant FOREIGN KEY (MandantID) REFERENCES Mandant(MandantID)
-);
+)Engine=InnoDB;

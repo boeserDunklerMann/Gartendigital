@@ -7,7 +7,6 @@
 
     function bookMsg( $message_from_raven)
     {
-        global $mysql;
         $msg = (string)$message_from_raven;
         openlog($GLOBALS["_logIdentifier"], LOG_PID | LOG_PERROR, LOG_LOCAL0);
         syslog(LOG_DEBUG, "Got raven");
@@ -27,7 +26,7 @@
         $mandantID = $mandant["MandantID"];
 
         // DONE: Execution pipeline informieren, dass ein Rabe gekommen ist.
-        $res = $mysql->query("call sp_AddRaven(".$mandantID.", \"".addslashes($msg)."\")", MYSQLI_USE_RESULT);
+        $res = $GLOBALS["mysql"]->query("call sp_AddRaven(".$mandantID.", \"".addslashes($msg)."\")", MYSQLI_USE_RESULT);
         if ($res)
         {
             //$res->data_seek(0);
@@ -66,10 +65,9 @@
 
     function getRavenResponse($ravenID)
     {
-        global $mysql;
         $rid = (int)$ravenID;
 
-        $res = $mysql->query(sprintf("call sp_GetRaven(%d)", $rid)); // TODO: eigentlich sp_GetRavenResponse
+        $res = $GLOBALS["mysql"]->query(sprintf("call sp_GetRaven(%d)", $rid)); // TODO: eigentlich sp_GetRavenResponse
         $res->data_seek(0);
         $row = $res->fetch_assoc();
         return $row["Message"];

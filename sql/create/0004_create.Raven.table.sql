@@ -10,4 +10,4 @@ create table Raven
     tstamp  timestamp,
     constraint PK_Raven primary key(RavenID),
     constraint FK_Raven_Mandant foreign key (MandantID) references Mandant(MandantID)
-)
+)Engine=InnoDB;

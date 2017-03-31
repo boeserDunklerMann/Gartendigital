@@ -9,7 +9,7 @@ create table CalculationPipeline
     constraint PK_CalculationPipeline PRIMARY key (CalculationPipelineID),
     CONSTRAINT FK_CalculationPipeline_Mandant FOREIGN KEY (MandantID) REFERENCES Mandant(MandantID),
     constraint FK_CalculationPipeline_CalculationPipeline FOREIGN KEY(ParentCalcID) REFERENCES CalculationPipeline(CalculationPipelineID)
-);
+)Engine=InnoDB;
 
 create table ExecutionPipeline
 (
@@ -21,7 +21,7 @@ create table ExecutionPipeline
     constraint PK_ExecutionPipeline PRIMARY key (ExecutionPipelineID),
     CONSTRAINT FK_ExecutionPipeline_Mandant FOREIGN KEY (MandantID) REFERENCES Mandant(MandantID),
     constraint FK_ExecutionPipeline_ExecutionPipeline foreign key(ParentExecID) REFERENCES ExecutionPipeline(ExecutionPipelineID)
-);
+)Engine=InnoDB;
 
 -- Beispieldaten:
 insert into CalculationPipeline

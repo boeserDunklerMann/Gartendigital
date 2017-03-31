@@ -5,7 +5,7 @@ create TABLE SettingsType
     stID    int not null auto_increment,
     stDes   VARCHAR(50),
     constraint PK_SettingsType PRIMARY KEY (stID)
-);
+)Engine=InnoDB;
 
 insert into SettingsType (stDes)
 values ('Gartendigital.All-Settings'),                  -- 1
@@ -25,4 +25,4 @@ create table Settings
     constraint PK_Settings PRIMARY KEY (SettingsID),
     constraint FK_Settings_SettingsType FOREIGN KEY (stID) REFERENCES SettingsType(stID),
     index IX_Settings_SettingsName (settingsName)
-)
+)Engine=InnoDB;

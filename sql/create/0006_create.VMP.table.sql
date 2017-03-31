@@ -9,7 +9,7 @@ create table VirtualMeteringPoint
     constraint PK_VMP PRIMARY KEY(VmpID, MandantID),
     constraint FK_VMP_Mandant FOREIGN KEY (MandantID) REFERENCES Mandant(MandantID),
     constraint FK_VMP_CalculationPipeline FOREIGN KEY (CalculationPipelineID) REFERENCES CalculationPipeline(CalculationPipelineID)
-);
+)Engine=InnoDB;
 
 -- Beispieldaten
 insert into VirtualMeteringPoint
