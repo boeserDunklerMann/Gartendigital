@@ -6,10 +6,10 @@
     include_once("inc/Raven.php");
 
     $mysql = new mysqli($_dbServer, $_dbUser, $_dbPass, $_dbName);
-    if ($_SERVER["HTTPS"] != "on")
-    {
-        throw new Exception("HTTPS is mandatory.");
-    }
+    // if ($_SERVER["HTTPS"] != "on")
+    // {
+    //     throw new Exception("HTTPS is mandatory.");
+    // }
     $server = new SoapServer("Meereen.wsdl");
     $server->addFunction("bookMsg");
     $server->addFunction("getRavenResponse");

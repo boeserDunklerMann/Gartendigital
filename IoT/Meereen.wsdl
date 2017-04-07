@@ -70,10 +70,10 @@
 
 <service name='MeereenService'>
   <port name='bookPort' binding='tns:bookBinding'>
-    <soap:address location='https://meereen.ddns.net/IoT/Meereen.php'/>
+    <soap:address location='http://meereen.ddns.net/IoT/Meereen.php'/>
   </port>
   <port name="getRavenResponsePort" binding="tns:getRavenResponseBinding">
-    <soap:address location='https://meereen.ddns.net/IoT/Meereen.php'/>
+    <soap:address location='http://meereen.ddns.net/IoT/Meereen.php'/>
   </port>
 </service>
 </definitions>

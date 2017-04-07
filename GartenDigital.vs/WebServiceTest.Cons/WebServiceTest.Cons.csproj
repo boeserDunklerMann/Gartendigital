@@ -58,7 +58,7 @@
     <None Include="Schema\Raven.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Meereen\Meereen.wsdl" />
+    <None Include="Service References\Meereen\Meereen1.wsdl" />
     <None Include="Service References\Meereen\WebServiceTest.Cons.Meereen.bookMsgResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

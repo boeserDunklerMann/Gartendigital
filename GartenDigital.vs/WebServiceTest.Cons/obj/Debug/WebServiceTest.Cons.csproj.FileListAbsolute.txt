@@ -8,5 +8,4 @@ X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj
 X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.pdb
 X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.exe
 X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\WebServiceTest.Cons.pdb
-X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\obj\Debug\WebServiceTest.Cons.csprojResolveAssemblyReference.cache
 X:\gitRepositories.Common\Gartendigital\GartenDigital.vs\WebServiceTest.Cons\bin\Debug\Schema\Raven.Beispiel.xml

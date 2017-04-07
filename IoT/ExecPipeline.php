@@ -1,15 +1,49 @@
 <?php
     
     include_once("inc/_consts.php");
+    include_once("inc/_functions.php");
     if (!openlog($_logIdentifier, LOG_PID | LOG_PERROR , LOG_LOCAL0))
         die ("openlog");
     syslog(LOG_DEBUG, "starting execution pipeline");
-    
+
+    ///
+    /// Liefert die CalculationPipeline als mysql-row zu einer CalculationPipelineID
+    ///
+    function GetCalcPipelineRow($id)
+    {
+        $qry = sprintf("SELECT * FROM CalculationPipeline Where CalculationPipelineID=%d", $id);
+        $res = $GLOBALS["mysql"]->query($qry);
+        if ($res)
+        {
+            $row = $res->fetch_assoc();
+            $res->close();
+            return $row;
+        }
+        else
+            return null;
+    }
+
+    ///
+    /// Liefert die NÄCHSTE CalculationPipeline als mysql-row zu einer CalculationPipelineID
+    ///    
+    function GetcNextCalcPipelineRow($id)
+    {
+        $qry = sprintf("SELECT * FROM CalculationPipeline Where ParentCalcID=%d", $id);
+        $res = $GLOBALS["mysql"]->query($qry);
+        if ($res)
+        {
+            $row = $res->fetch_assoc();
+            $res->close();
+            return $row;
+        }
+        else
+            return null;
+    }
+
     $mq = msg_get_queue($_mqID);
-//    if (msg_receive($mq, 0, $_msgTypeNewRaven, 40, $ravenID, true, MSG_IPC_NOWAIT) == true)
     if (msg_receive($mq, 0, $_msgTypeNewRaven, 40, $ravenID, true, MSG_IPC_NOWAIT) != true)
     {
-        $ravenID = 8;
+        $ravenID = 2;
     }
     {
         // msg_remove_queue($mq);
@@ -19,11 +53,17 @@
         // DONE: OK, ich hab jetzt meinen Raben, jetzt hole dem seine Nachricht aus der Datenbank und mach was draus.
         $mysql = new mysqli($_dbServer, $_dbUser, $_dbPass, $_dbName);
         $res = $mysql->query(sprintf("call sp_GetRaven(%d)", $ravenID));
-        $res->data_seek(0);
-        $row = $res->fetch_assoc();
-        $ravenMsg = $row["Message"];
-        $res->free();
-        // TODO: hier ein simples select machen -> müsste krachen?
+        if ($res)
+        {
+            //$res->data_seek(0);
+            $row = $res->fetch_assoc();
+            $ravenMsg = $row["Message"];
+            $res->close();
+        }
+        else
+        {
+            printMySqlError($mysql);
+        }
         
         $xml = simplexml_load_string($ravenMsg);
         $sensors = $xml->Data->Sensors;
@@ -36,10 +76,14 @@
             $meteringName = $sensor["MeteringName"];
             $vmp = $sensor["VirtualMeteringPoint"];
             $meteringValue = $sensor;
-            // printf("Name: %s - Type: %s - Value: %s - VMP: %d\n", $meteringName, $meteringType, $meteringValue, $vmp);
+            // hole die CalcPipeline zum VMP und Mandant
             $sql = sprintf("select CalculationPipelineID from VirtualMeteringPoint where VmpID=%d and MandantID=%d", $vmp, $mandant);
             syslog(LOG_DEBUG, $sql);
+            // reconnect to avoid "out of sync"
+            $mysql->close();
+            $mysql = new mysqli($_dbServer, $_dbUser, $_dbPass, $_dbName);
             $result = $mysql->query($sql);
+            $value = $meteringValue;
 
             if ($result)
             {
@@ -48,34 +92,60 @@
                 else
                     syslog(LOG_DEBUG, "Entering calc pipeline");
 
-                while($result->num_rows !== 0)
+                while(($result != null) )
                 {
-                    $row = $result->fetch_assoc();
-                    $calcpipeid = $row["CalculationPipelineID"];
-                    $result->free();
-                    syslog(LOG_DEBUG, sprintf("fetching calc pipeline #%d", $calcpipeid));
-                    $result = $mysql->query(sprintf("select * from CalculationPipeline where CalculationPipelineID=%d", $calcpipeid));
-                    if ($result)
-                    {
+                    if (method_exists($result, "fetch_assoc"))
                         $row = $result->fetch_assoc();
-                        // TODO: berechne (dafür brauch ich die $row)
+                    else
+                        $row = $result; // result ist von GetNextCalcPipelineRow, daher schon eine row
+                    
+                    $calcpipeid = $row["CalculationPipelineID"];
+                    // hole die kompletten Pipelinedaten
+                    $result = GetCalcPipelineRow($calcpipeid);
+                    if ($result != null)
+                    {
+                        $row = $result;
+                        // DONE: berechne 
+                        $operand = $row["Operand"];
+                        $operator = $row["Operator"];
+                        switch($row["Operator"])
+                        {
+                            case "+":
+                                $value = $value + $operand;
+                                break;
+                            case "-":
+                                $value -= $operand;
+                                break;
+                            case "*":
+                                $value *= $operand;
+                                break;
+                            case "/":
+                                $value = $value / $operand;
+                                break;
+                            case "<<":
+                                $value = $value << $operand;
+                                break;
+                            case ">>":
+                                $value = $value >> $operand;
+                                break;
+                            case "|":
+                                $value = $value | $operand;
+                                break;
+                            case "&":
+                                $value = $value & $operand;
+                                break;
+                        }
+                        syslog(LOG_DEBUG, "Calculated value: ".$value);
+                        // TODO: berechneten Wert irgendwo hin speichern und dann die ExecPipeline starten
+                        
                         // hole nächsten
-                        $result->free();
-                        $sql = sprintf("select * from CalculationPipeline where ParentCalcID=%d", $calcpipeid);
-                        $result = $mysql->query($sql);
-                        // if ($result)
-                        // {
-                        //     $row = $result->fetch_assoc();
-                        // }
+                        $result = GetcNextCalcPipelineRow($calcpipeid);
                     }
                 }
             }
             else
             {
-                echo "Error: Our query failed to execute and here is why: \n";
-                echo "Query: " . $sql . "\n";
-                echo "Errno: " . $mysql->errno . "\n";
-                echo "Error: " . $mysql->error . "\n";
+                printMySqlError($mysql);
             }
         }
     }

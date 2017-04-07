@@ -51,10 +51,10 @@
   </wsdl:binding>
   <wsdl:service name="MeereenService">
     <wsdl:port name="bookPort" binding="tns:bookBinding">
-      <soap:address location="https://meereen.ddns.net/IoT/Meereen.php" />
+      <soap:address location="http://meereen.ddns.net/IoT/Meereen.php" />
     </wsdl:port>
     <wsdl:port name="getRavenResponsePort" binding="tns:getRavenResponseBinding">
-      <soap:address location="https://meereen.ddns.net/IoT/Meereen.php" />
+      <soap:address location="http://meereen.ddns.net/IoT/Meereen.php" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

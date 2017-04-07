@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://meereen.ddns.net/IoT/Meereen.wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://meereen.ddns.net/IoT/Meereen.wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Meereen.wsdl" MetadataType="Wsdl" ID="4b9706e9-9446-4f02-b160-747b2e149bb1" SourceId="1" SourceUrl="https://meereen.ddns.net/IoT/Meereen.wsdl" />
+    <MetadataFile FileName="Meereen1.wsdl" MetadataType="Wsdl" ID="55c78823-d09b-45fa-8e99-15a868a1d530" SourceId="1" SourceUrl="http://meereen.ddns.net/IoT/Meereen.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
