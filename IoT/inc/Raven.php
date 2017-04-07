@@ -3,8 +3,7 @@
     /// Verbucht eine einkommende Nachricht von einem Raben in die Datenbank
     /// TODO: Hier müsste noch ein Handle zurückgegeben werden, mit welchem
     /// der Rabe sich seine Antwort abholt.
-    ///
-
+    /// NOTODO: die RavenID von sp_AddRaven ist dieses Handle.
     function bookMsg( $message_from_raven)
     {
         $msg = (string)$message_from_raven;
@@ -29,22 +28,22 @@
         $res = $GLOBALS["mysql"]->query("call sp_AddRaven(".$mandantID.", \"".addslashes($msg)."\")", MYSQLI_USE_RESULT);
         if ($res)
         {
-            //$res->data_seek(0);
+            // Hole die RavenID, die müssmer zurückgeben.
             $row = $res->fetch_assoc();
             $rid = $row['RavenID'];
             $retVal = sprintf($GLOBALS['_bookMsgSuccess'], $rid);
             $res->close();
 
+            // hole/öffne SYSV-MessageQueue
             $msgQueue = msg_get_queue($GLOBALS["_mqID"]);
             if ($msgQueue)
             {
+                // schreibe Nachricht mit RavenID da rein
                 if (!msg_send($msgQueue, /* msg type */ $GLOBALS["_msgTypeNewRaven"], /* data */ $rid))
                 {
                     syslog(LOG_ERR, "Writing msg queue failed.");
                     throw new Exception("msg_send");
                 }
-                // if (!msg_remove_queue($msgQueue))
-                //     throw new Exception("msg_remove_queue");
                 // TODO: execute the pipeline (async)
                 // exec("php ExecPipeline.php");
             }
@@ -63,6 +62,9 @@
         return $retVal;
     }
 
+    ///
+    /// Die Antwort für unseren Raben
+    ///
     function getRavenResponse($ravenID)
     {
         $rid = (int)$ravenID;
@@ -70,6 +72,7 @@
         $res = $GLOBALS["mysql"]->query(sprintf("call sp_GetRaven(%d)", $rid)); // TODO: eigentlich sp_GetRavenResponse
         $res->data_seek(0);
         $row = $res->fetch_assoc();
+        $res->close();
         return $row["Message"];
     }
  ?>

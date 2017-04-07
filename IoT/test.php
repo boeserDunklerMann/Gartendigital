@@ -4,6 +4,9 @@
 <?php
     include_once("inc/_consts.php");
 
+    ///
+    /// Liefert die CalculationPipeline als mysql-row zu einer CalculationPipelineID
+    ///
     function GetCalcPipelineRow($id)
     {
         $qry = sprintf("SELECT * FROM CalculationPipeline Where CalculationPipelineID=%d", $id);
@@ -17,6 +20,10 @@
         else
             return null;
     }
+
+    ///
+    /// Liefert die NÄCHSTE CalculationPipeline als mysql-row zu einer CalculationPipelineID
+    ///    
     function GetcNextCalPipelineRow($id)
     {
         $qry = sprintf("SELECT * FROM CalculationPipeline Where ParentCalcID=%d", $id);
@@ -40,6 +47,7 @@
         $row = GetcNextCalPipelineRow($row['CalculationPipelineID']);
     }
 
+/* Fehlerhaft, irgendwie
     // $res = $mysql->query("SELECT * FROM CalculationPipeline", MYSQLI_USE_RESULT);
     // if ($res)
     // {
@@ -84,7 +92,7 @@
     // if ($msgQueue)
     // {
     //     print_r($msgQueue);
-    //     if (!msg_send($msgQueue, /* msg type? */ 21, /* data */ 123456))
+    //     if (!msg_send($msgQueue, /* msg type? / 21, /* data / 123456))
     //         die("msg_send");
     //     // if (!msg_remove_queue($msgQueue))
     //     //     die("msg_remove_queue");
@@ -99,5 +107,6 @@
     // $mandantID = $mandant["MandantID"];
     // print_r($mandantID);
     // echo("\n\n\n".$mandantID);
+    */
 ?>
 </pre></body></html>
